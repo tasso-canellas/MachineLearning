@@ -1,3 +1,17 @@
+# Regressão logística
+# Dada uma reta como sei se um ponto está acima ou abaixo dela?
+    # Nesse caso, para y > (-ax0-c)/b, ax0 + by + c > 0
+    # Para y < (-ax0-c)/b, ax0 + by + c < 0
+
+# Como funciona a cross-entropy?
+    # Usam negativo do log da probabilidade pois a probabilidade está entre 0 e 1
+    # y_pred é a probabilidade de x ser da classe 1
+    
+# Qual a derivida da cross-entropy?
+    # (y_pred - y)*x
+
+# Pq usar acuracia balanceada em caso de classificador binário?
+
 import numpy as np
 import matplotlib.pyplot as plt
 
