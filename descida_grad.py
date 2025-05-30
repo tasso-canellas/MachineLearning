@@ -14,6 +14,15 @@ def dados(n_samples:int = 100, n_features:int = 3, noise:int = 1) -> np.ndarray:
     y = np.dot(X_b, theta) + noise*np.random.randn(n_samples)
     return X_b, y
 
+def dados_logistica(n_samples:int = 100, n_features:int = 3, noise:int = 1) -> np.ndarray:
+    X = np.random.rand(n_samples, n_features)*2-1#* 10
+    theta = np.array([0]+ [1.0]*n_features)
+    X_b = np.c_[np.ones((n_samples, 1)), X]
+    logits = np.dot(X_b, theta) + noise*np.random.randn(n_samples)
+    prob = 1 / (1 + np.exp(-logits))  
+    y = np.where(prob > 0.5, 1, 0) 
+    return X_b, y
+
 def descida_estocastica(X_b, y, lr = 0.1, epochs = 1000):
     n_features = X_b.shape[1]
     n_samples = X_b.shape[0]
@@ -79,3 +88,14 @@ if __name__ == '__main__':
 
 # Regressão logística
 # Dada uma reta como sei se um ponto está acima ou abaixo dela?
+    # Nesse caso, para y > (-ax0-c)/b, ax0 + by + c > 0
+    # Para y < (-ax0-c)/b, ax0 + by + c < 0
+
+# Como funciona a cross-entropy?
+    # Usam negativo do log da probabilidade pois a probabilidade está entre 0 e 1
+    # y_pred é a probabilidade de x ser da classe 1
+    
+# Qual a derivida da cross-entropy?
+    # (y_pred - y)*x
+
+# Pq usar acuracia balanceada em caso de classificador binário?
